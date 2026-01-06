@@ -2,72 +2,214 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Live Chat Support</title>
+  <title>Shopify Live Support</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+  <!-- Shopify-like font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
   <style>
+    :root {
+      --shopify-green: #008060;
+      --shopify-bg: #f6f6f7;
+      --text-dark: #202223;
+      --text-muted: #6d7175;
+      --card-shadow: 0 8px 30px rgba(0,0,0,0.08);
+      --radius: 14px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial;
-      background: #f7f7f7;
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--shopify-bg);
+      color: var(--text-dark);
     }
 
-    .page-wrapper {
-      min-height: 100vh;
+    /* Header */
+    header {
+      background: #ffffff;
+      border-bottom: 1px solid #e1e3e5;
+      padding: 16px 32px;
       display: flex;
       align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 20px;
     }
 
+    header h1 {
+      font-size: 18px;
+      font-weight: 600;
+      margin: 0;
+    }
+
+    /* Main Layout */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 80px 20px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    /* Left content */
+    .content h2 {
+      font-size: 42px;
+      line-height: 1.2;
+      margin-bottom: 20px;
+    }
+
+    .content p {
+      font-size: 18px;
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 30px;
+    }
+
+    .actions {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--shopify-green);
+      color: white;
+      padding: 14px 26px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.2s ease;
+    }
+
+    .btn-primary:hover {
+      background: #006e52;
+    }
+
+    .btn-secondary {
+      background: white;
+      color: var(--shopify-green);
+      padding: 14px 26px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      border: 1px solid #d2d5d8;
+    }
+
+    /* Right Card */
     .card {
-      background: #ffffff;
+      background: white;
+      border-radius: var(--radius);
+      box-shadow: var(--card-shadow);
       padding: 40px;
-      border-radius: 12px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-      max-width: 500px;
-      width: 100%;
     }
 
-    .card h1 {
+    .card h3 {
+      font-size: 24px;
+      margin-bottom: 15px;
+    }
+
+    .card ul {
+      padding-left: 20px;
+      color: var(--text-muted);
+      line-height: 1.8;
+      margin-bottom: 30px;
+    }
+
+    .card li {
       margin-bottom: 10px;
-      font-size: 26px;
-      color: #111;
     }
 
-    .card p {
-      color: #555;
-      font-size: 16px;
-      line-height: 1.6;
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 30px;
+      color: var(--text-muted);
+      font-size: 14px;
+    }
+
+    /* Mobile */
+    @media (max-width: 900px) {
+      .container {
+        grid-template-columns: 1fr;
+        padding: 50px 20px;
+      }
+
+      .content h2 {
+        font-size: 32px;
+      }
     }
   </style>
 </head>
 
 <body>
-  <div class="page-wrapper">
-    <div class="card">
-      <h1>Live Support</h1>
-      <p>
-        Need help? Our support team is online.
-        Click the chat bubble at the bottom right to start a conversation.
-      </p>
-    </div>
-  </div>
 
-  <!--Start of Tawk.to Script-->
+  <!-- Header -->
+  <header>
+    <h1>Shopify Support</h1>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container">
+    
+    <!-- Left -->
+    <div class="content">
+      <h2>24/7 Live Chat Support for Shopify Merchants</h2>
+      <p>
+        Get real-time assistance with store setup, payments, compliance,
+        and technical issues. Our team is online and ready to help you
+        succeed on Shopify.
+      </p>
+
+      <div class="actions">
+        <a href="#" class="btn-primary" onclick="Tawk_API.maximize(); return false;">
+          Start Live Chat
+        </a>
+        <a href="#" class="btn-secondary">
+          Visit Help Center
+        </a>
+      </div>
+    </div>
+
+    <!-- Right -->
+    <div class="card">
+      <h3>What we can help with</h3>
+      <ul>
+        <li>Store setup & configuration</li>
+        <li>Payments & checkout issues</li>
+        <li>Theme & app troubleshooting</li>
+        <li>Account verification & compliance</li>
+        <li>Order & customer support</li>
+      </ul>
+
+      <a href="#" class="btn-primary" onclick="Tawk_API.maximize(); return false;">
+        Chat with Support
+      </a>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    © 2026 Shopify Support · Powered by Live Chat
+  </footer>
+
+  <!-- Tawk.to Script -->
   <script type="text/javascript">
-  var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-  (function(){
-    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-    s1.async=true;
-    s1.src='https://embed.tawk.to/695cf6db9786b81985f7c43a/1je9i8isk';
-    s1.charset='UTF-8';
-    s1.setAttribute('crossorigin','*');
-    s0.parentNode.insertBefore(s1,s0);
-  })();
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+      var s1=document.createElement("script"),
+          s0=document.getElementsByTagName("script")[0];
+      s1.async=true;
+      s1.src='https://embed.tawk.to/695cf6db9786b81985f7c43a/1je9i8isk';
+      s1.charset='UTF-8';
+      s1.setAttribute('crossorigin','*');
+      s0.parentNode.insertBefore(s1,s0);
+    })();
   </script>
-  <!--End of Tawk.to Script-->
 
 </body>
 </html>
