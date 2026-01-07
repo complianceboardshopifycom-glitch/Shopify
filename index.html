@@ -39,6 +39,9 @@ header {
   background: #ffffff;
   border-bottom: 1px solid #e1e3e5;
   padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 header h1 {
@@ -46,6 +49,14 @@ header h1 {
   font-size: 18px;
   font-weight: 600;
   color: #008060;
+}
+
+/* Shopify black wordmark (text-only, no image) */
+.shopify-logo {
+  font-weight: 700;
+  font-size: 20px;
+  color: #000000;
+  letter-spacing: -0.5px;
 }
 
 /* =====================
@@ -75,27 +86,31 @@ main {
   max-width: 620px;
   position: relative;
   margin-bottom: 44px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* clickable arrow BEFORE input */
+.search .arrow {
+  background: #008060;
+  color: #ffffff;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
 }
 
 .search input {
-  width: 100%;
-  padding: 18px 56px 18px 18px;
+  flex: 1;
+  padding: 18px 18px;
   border-radius: 12px;
   border: 1px solid #c9cccf;
   font-size: 16px;
-}
-
-.search button {
-  position: absolute;
-  right: 8px;
-  top: 50%;
-  transform: translateY(-50%);
-  background: #008060;
-  color: #fff;
-  width: 42px;
-  height: 42px;
-  border-radius: 10px;
-  font-size: 18px;
 }
 
 /* =====================
@@ -245,6 +260,7 @@ footer {
 
 <header>
   <h1>Shopify Help Center</h1>
+  <div class="shopify-logo">shopify</div>
 </header>
 
 <div class="wrapper">
@@ -255,9 +271,10 @@ footer {
     <section id="home">
       <div class="hero">
         <h2>How can we help?</h2>
+
         <div class="search">
+          <button class="arrow" onclick="openChat()">➜</button>
           <input id="searchInput" type="text" placeholder="Ask anything..." />
-          <button onclick="openChat()">➜</button>
         </div>
       </div>
 
