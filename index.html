@@ -17,12 +17,15 @@
 body {
   margin: 0;
   font-family: 'Inter', system-ui, sans-serif;
-  background: #f1f8f5; /* Shopify Help Center background */
+  background: #f1f8f5;
   color: #202223;
 }
 
-button {
+button,input {
   font-family: inherit;
+}
+
+button {
   border: none;
   cursor: pointer;
 }
@@ -49,30 +52,50 @@ header h1 {
    LAYOUT
 ===================== */
 .wrapper {
-  max-width: 1100px;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 40px 20px;
+  padding: 48px 20px;
+  display: flex;
+  gap: 32px;
+}
+
+main {
+  flex: 1;
 }
 
 /* =====================
    HERO
 ===================== */
 .hero h2 {
-  font-size: 40px;
-  margin-bottom: 16px;
+  font-size: 42px;
+  margin-bottom: 18px;
 }
 
 .search {
-  max-width: 600px;
-  margin-bottom: 40px;
+  max-width: 620px;
+  position: relative;
+  margin-bottom: 44px;
 }
 
 .search input {
   width: 100%;
-  padding: 16px 18px;
-  border-radius: 10px;
+  padding: 18px 56px 18px 18px;
+  border-radius: 12px;
   border: 1px solid #c9cccf;
   font-size: 16px;
+}
+
+.search button {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #008060;
+  color: #fff;
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  font-size: 18px;
 }
 
 /* =====================
@@ -81,12 +104,12 @@ header h1 {
 .cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 24px;
+  gap: 26px;
 }
 
 .card {
   background: #ffffff;
-  border-radius: 14px;
+  border-radius: 16px;
   overflow: hidden;
   border: 1px solid #e1e3e5;
   cursor: pointer;
@@ -95,44 +118,44 @@ header h1 {
 
 .card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 12px 28px rgba(0,0,0,.08);
+  box-shadow: 0 14px 30px rgba(0,0,0,.08);
 }
 
 .card img {
   width: 100%;
-  height: 160px;
+  height: 170px;
   object-fit: cover;
 }
 
 .card div {
-  padding: 18px;
+  padding: 20px;
   font-weight: 600;
 }
 
 /* =====================
-   ARTICLE PAGE
+   ARTICLE
 ===================== */
 .article {
   display: none;
   background: #ffffff;
-  border-radius: 14px;
-  padding: 40px;
+  border-radius: 16px;
+  padding: 44px;
   border: 1px solid #e1e3e5;
 }
 
 .article h3 {
-  font-size: 32px;
+  font-size: 34px;
   margin-top: 0;
 }
 
 .article p {
   line-height: 1.7;
-  margin-bottom: 20px;
+  margin-bottom: 22px;
 }
 
 .article ul {
   padding-left: 20px;
-  margin-bottom: 32px;
+  margin-bottom: 36px;
 }
 
 .article li {
@@ -151,16 +174,47 @@ header h1 {
 .primary {
   background: #008060;
   color: #ffffff;
-  padding: 14px 22px;
-  border-radius: 10px;
+  padding: 14px 24px;
+  border-radius: 12px;
   font-weight: 600;
 }
 
 .secondary {
   background: #eef0f1;
-  padding: 14px 22px;
-  border-radius: 10px;
+  padding: 14px 24px;
+  border-radius: 12px;
   font-weight: 600;
+}
+
+/* =====================
+   CHAT SIDEBAR
+===================== */
+aside {
+  width: 320px;
+}
+
+.chat-box {
+  background: linear-gradient(180deg,#ffffff,#f3faf7);
+  border-radius: 18px;
+  border: 1px solid #e1e3e5;
+  padding: 24px;
+}
+
+.chat-box h4 {
+  margin: 0 0 12px 0;
+  color: #008060;
+}
+
+.chat-box p {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #5c5f62;
+  margin-bottom: 20px;
+}
+
+.chat-illustration {
+  width: 100%;
+  border-radius: 14px;
 }
 
 /* =====================
@@ -168,7 +222,7 @@ header h1 {
 ===================== */
 footer {
   text-align: center;
-  padding: 32px;
+  padding: 36px 20px;
   color: #6d7175;
   font-size: 14px;
 }
@@ -176,9 +230,13 @@ footer {
 /* =====================
    RESPONSIVE
 ===================== */
-@media(max-width: 600px){
-  .hero h2 { font-size: 32px; }
-  .article { padding: 24px; }
+@media(max-width: 900px){
+  .wrapper {
+    flex-direction: column;
+  }
+  aside {
+    width: 100%;
+  }
 }
 </style>
 </head>
@@ -191,44 +249,62 @@ footer {
 
 <div class="wrapper">
 
-  <!-- HOME -->
-  <section id="home">
-    <div class="hero">
-      <h2>How can we help?</h2>
-      <div class="search">
-        <input type="text" placeholder="Ask anything..." />
+  <main>
+
+    <!-- HOME -->
+    <section id="home">
+      <div class="hero">
+        <h2>How can we help?</h2>
+        <div class="search">
+          <input id="searchInput" type="text" placeholder="Ask anything..." />
+          <button onclick="openChat()">➜</button>
+        </div>
       </div>
+
+      <div class="cards">
+        <div class="card" onclick="openArticle('theme')">
+          <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4">
+          <div>Customizing your theme</div>
+        </div>
+
+        <div class="card" onclick="openArticle('payments')">
+          <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d">
+          <div>Setting up payments</div>
+        </div>
+
+        <div class="card" onclick="openArticle('orders')">
+          <img src="https://images.unsplash.com/photo-1566576721346-d4a3b4eaeb55">
+          <div>Fulfilling your orders</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ARTICLE -->
+    <section class="article" id="article">
+      <h3 id="title"></h3>
+      <p id="desc"></p>
+      <ul id="steps"></ul>
+
+      <div class="actions">
+        <button class="primary" onclick="openChat()">Chat with advisor</button>
+        <button class="secondary" onclick="goBack()">← Back</button>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- CHAT SIDEBAR -->
+  <aside>
+    <div class="chat-box">
+      <h4>Chat support</h4>
+      <p>
+        Our support advisors are available 24/7 to help with store setup,
+        payments, themes, and order management.
+      </p>
+      <img class="chat-illustration"
+        src="https://images.unsplash.com/photo-1525186402429-b4ff38bedbec">
     </div>
-
-    <div class="cards">
-      <div class="card" onclick="openArticle('theme')">
-        <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4">
-        <div>Customizing your theme</div>
-      </div>
-
-      <div class="card" onclick="openArticle('payments')">
-        <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d">
-        <div>Setting up payments</div>
-      </div>
-
-      <div class="card" onclick="openArticle('orders')">
-        <img src="https://images.unsplash.com/photo-1566576721346-d4a3b4eaeb55">
-        <div>Fulfilling your orders</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ARTICLE -->
-  <section class="article" id="article">
-    <h3 id="title"></h3>
-    <p id="desc"></p>
-    <ul id="steps"></ul>
-
-    <div class="actions">
-      <button class="primary" onclick="openChat()">Chat with advisor</button>
-      <button class="secondary" onclick="goBack()">← Back to Help Center</button>
-    </div>
-  </section>
+  </aside>
 
 </div>
 
@@ -240,34 +316,34 @@ footer {
 const data = {
   theme: {
     title: "Customizing your theme",
-    desc: "Customizing your theme allows you to control how your storefront looks and feels so it matches your brand and improves customer trust.",
+    desc: "Customizing your theme allows you to control how your storefront looks and feels so it matches your brand.",
     steps: [
-      "Go to Online Store → Themes in your Shopify admin.",
-      "Click Customize to open the theme editor.",
-      "Edit colors, fonts, and layout sections using the sidebar.",
-      "Preview changes on mobile and desktop.",
-      "Save and publish once satisfied."
+      "Go to Online Store → Themes in your admin.",
+      "Click Customize on your active theme.",
+      "Edit colors, fonts, and layout sections.",
+      "Preview on desktop and mobile.",
+      "Save and publish your changes."
     ]
   },
   payments: {
     title: "Setting up payments",
-    desc: "Setting up payments ensures customers can securely complete purchases using their preferred methods.",
+    desc: "Payment setup allows customers to securely complete purchases using trusted payment methods.",
     steps: [
-      "Open Settings → Payments from your admin.",
-      "Enable Shopify Payments or select a third-party provider.",
-      "Complete identity and banking verification.",
-      "Enable alternative payment methods if needed.",
-      "Test checkout before launching."
+      "Open Settings → Payments.",
+      "Activate Shopify Payments or a third-party provider.",
+      "Verify your business and banking details.",
+      "Enable alternative payment methods.",
+      "Test checkout before launch."
     ]
   },
   orders: {
     title: "Fulfilling your orders",
-    desc: "Order fulfillment ensures purchased items are packed, shipped, and delivered accurately to customers.",
+    desc: "Fulfilling orders ensures customers receive their purchases accurately and on time.",
     steps: [
-      "Go to Orders in your admin dashboard.",
+      "Go to Orders in your admin.",
       "Open an unfulfilled order.",
       "Confirm items and shipping details.",
-      "Add tracking information if available.",
+      "Add tracking information.",
       "Mark the order as fulfilled."
     ]
   }
@@ -299,6 +375,12 @@ function openChat() {
     Tawk_API.maximize();
   }
 }
+
+document.getElementById('searchInput').addEventListener('keydown', function(e){
+  if(e.key === 'Enter') {
+    openChat();
+  }
+});
 </script>
 
 <!--Start of Tawk.to Script-->
