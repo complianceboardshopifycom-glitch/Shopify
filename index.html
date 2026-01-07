@@ -1,339 +1,399 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Shopify Help Center</title>
+  <meta charset="UTF-8" />
+  <title>Shopify Help Center</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Inter Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-<style>
-:root{
-  --green:#008060;
-  --green-soft:#eef7f3;
-  --border:#e5e7eb;
-  --text:#111827;
-  --muted:#6b7280;
-}
+  <style>
+    /* =========================
+       GLOBAL STYLES
+    ========================== */
+    * {
+      box-sizing: border-box;
+    }
 
-*{box-sizing:border-box}
+    body {
+      margin: 0;
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #f6f6f7;
+      color: #202223;
+    }
 
-body{
-  margin:0;
-  font-family:Inter,system-ui,sans-serif;
-  background:linear-gradient(180deg,#f1f8f5,#ffffff);
-  color:var(--text);
-}
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
 
-/* Header */
-header{
-  background:#fff;
-  border-bottom:1px solid var(--border);
-  padding:14px 24px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-}
+    button {
+      font-family: inherit;
+      cursor: pointer;
+      border: none;
+    }
 
-.brand{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  font-weight:700;
-}
+    /* =========================
+       HEADER
+    ========================== */
+    header {
+      background: #ffffff;
+      border-bottom: 1px solid #e1e3e5;
+      padding: 16px 24px;
+    }
 
-.brand-dot{
-  width:12px;
-  height:12px;
-  background:var(--green);
-  border-radius:50%;
-}
+    .header-title {
+      font-size: 18px;
+      font-weight: 600;
+      color: #008060;
+    }
 
-.avatar{
-  width:36px;
-  height:36px;
-  border-radius:50%;
-  background:#e5e7eb;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-weight:600;
-}
+    /* =========================
+       LAYOUT
+    ========================== */
+    .container {
+      display: flex;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 32px 16px;
+      gap: 24px;
+    }
 
-/* Layout */
-.main{
-  display:grid;
-  grid-template-columns:1fr 360px;
-  min-height:calc(100vh - 64px);
-}
+    main {
+      flex: 1;
+    }
 
-/* Left */
-.content{
-  padding:48px;
-}
+    /* =========================
+       HERO / SEARCH
+    ========================== */
+    .hero h1 {
+      font-size: 36px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
 
-h1{
-  font-size:40px;
-  margin-bottom:12px;
-}
+    .search-box {
+      width: 100%;
+      max-width: 520px;
+      position: relative;
+      margin-bottom: 32px;
+    }
 
-.search{
-  width:100%;
-  padding:14px 18px;
-  border-radius:14px;
-  border:1px solid var(--border);
-  font-size:16px;
-  margin-bottom:36px;
-}
+    .search-box input {
+      width: 100%;
+      padding: 14px 16px;
+      border-radius: 8px;
+      border: 1px solid #c9cccf;
+      font-size: 15px;
+    }
 
-/* Cards */
-.cards{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-  gap:24px;
-}
+    /* =========================
+       HELP CARDS
+    ========================== */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+    }
 
-.card{
-  background:#fff;
-  border-radius:18px;
-  overflow:hidden;
-  box-shadow:0 10px 28px rgba(0,0,0,.06);
-  cursor:pointer;
-  transition:.2s ease;
-}
+    .card {
+      background: #ffffff;
+      border-radius: 12px;
+      border: 1px solid #e1e3e5;
+      overflow: hidden;
+      transition: box-shadow 0.2s ease;
+      cursor: pointer;
+    }
 
-.card:hover{transform:translateY(-5px)}
+    .card:hover {
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    }
 
-.card img{
-  width:100%;
-  height:150px;
-  object-fit:cover;
-}
+    .card img {
+      width: 100%;
+      height: 140px;
+      object-fit: cover;
+    }
 
-.card h3{
-  padding:16px;
-  margin:0;
-}
+    .card-content {
+      padding: 16px;
+    }
 
-/* Article */
-.article{
-  display:none;
-  background:#fff;
-  border-radius:18px;
-  padding:36px;
-  box-shadow:0 10px 28px rgba(0,0,0,.06);
-}
+    .card-content h3 {
+      font-size: 16px;
+      font-weight: 600;
+      margin: 0;
+    }
 
-.article h2{margin-top:0}
+    /* =========================
+       ARTICLE VIEW
+    ========================== */
+    .article {
+      display: none;
+      background: #ffffff;
+      border-radius: 12px;
+      border: 1px solid #e1e3e5;
+      padding: 32px;
+    }
 
-.article ul{
-  padding-left:18px;
-  line-height:1.7;
-}
+    .article h2 {
+      margin-top: 0;
+      font-size: 28px;
+    }
 
-.article button{
-  margin-top:28px;
-  padding:14px 18px;
-  background:var(--green);
-  color:#fff;
-  border:none;
-  border-radius:12px;
-  font-size:16px;
-  cursor:pointer;
-}
+    .article p {
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
 
-.back{
-  background:none;
-  border:none;
-  color:var(--green);
-  font-weight:600;
-  margin-bottom:20px;
-  cursor:pointer;
-}
+    .article ul {
+      padding-left: 20px;
+      margin-bottom: 24px;
+    }
 
-/* Chat panel */
-.chat-panel{
-  background:#fff;
-  border-left:1px solid var(--border);
-  padding:24px;
-}
+    .article li {
+      margin-bottom: 8px;
+    }
 
-.queue{
-  background:#f9fafb;
-  padding:16px;
-  border-radius:14px;
-  margin-bottom:20px;
-  font-size:14px;
-}
+    .article-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
 
-.queue span{
-  color:var(--green);
-  font-weight:600;
-}
+    .btn-primary {
+      background: #008060;
+      color: #ffffff;
+      padding: 12px 18px;
+      border-radius: 8px;
+      font-weight: 600;
+    }
 
-.chat-box{
-  border:1px dashed var(--border);
-  height:300px;
-  border-radius:16px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  color:var(--muted);
-}
+    .btn-secondary {
+      background: #e1e3e5;
+      padding: 12px 18px;
+      border-radius: 8px;
+      font-weight: 600;
+    }
 
-.chat-btn{
-  width:100%;
-  margin-top:20px;
-  padding:14px;
-  background:var(--green);
-  color:#fff;
-  border:none;
-  border-radius:14px;
-  font-size:16px;
-  cursor:pointer;
-}
+    /* =========================
+       CHAT SIDEBAR (UI ONLY)
+    ========================== */
+    aside {
+      width: 300px;
+      background: #ffffff;
+      border: 1px solid #e1e3e5;
+      border-radius: 12px;
+      padding: 16px;
+      height: fit-content;
+    }
 
-footer{
-  text-align:center;
-  padding:24px;
-  color:var(--muted);
-}
-</style>
+    .chat-header {
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: #008060;
+    }
+
+    .chat-placeholder {
+      background: #f6f6f7;
+      border-radius: 8px;
+      padding: 16px;
+      font-size: 14px;
+      color: #6d7175;
+    }
+
+    /* =========================
+       FOOTER
+    ========================== */
+    footer {
+      text-align: center;
+      padding: 24px;
+      font-size: 13px;
+      color: #6d7175;
+    }
+
+    /* =========================
+       RESPONSIVE
+    ========================== */
+    @media (max-width: 900px) {
+      .container {
+        flex-direction: column;
+      }
+
+      aside {
+        width: 100%;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-<header>
-  <div class="brand">
-    <div class="brand-dot"></div>
-    Shopify Help Center
-  </div>
-  <div class="avatar">SC</div>
-</header>
+  <!-- =========================
+       HEADER
+  ========================== -->
+  <header>
+    <div class="header-title">Shopify Help Center</div>
+  </header>
 
-<div class="main">
+  <!-- =========================
+       MAIN CONTENT
+  ========================== -->
+  <div class="container">
+    <main>
 
-  <!-- LEFT -->
-  <div class="content">
+      <!-- HERO -->
+      <section class="hero" id="hero">
+        <h1>How can we help?</h1>
+        <div class="search-box">
+          <input type="text" placeholder="Search for answers (UI only)" />
+        </div>
+      </section>
 
-    <h1>How can we help?</h1>
-    <input class="search" placeholder="Ask anything about Shopify…" />
+      <!-- HELP CARDS -->
+      <section class="cards" id="cards">
+        <div class="card" onclick="openArticle('theme')">
+          <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4" alt="">
+          <div class="card-content">
+            <h3>Customizing your theme</h3>
+          </div>
+        </div>
 
-    <div class="cards" id="cards">
+        <div class="card" onclick="openArticle('payments')">
+          <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d" alt="">
+          <div class="card-content">
+            <h3>Setting up payments</h3>
+          </div>
+        </div>
 
-      <div class="card" onclick="openArticle('theme')">
-        <img src="https://images.unsplash.com/photo-1522199710521-72d69614c702">
-        <h3>Customizing your theme</h3>
+        <div class="card" onclick="openArticle('orders')">
+          <img src="https://images.unsplash.com/photo-1566576721346-d4a3b4eaeb55" alt="">
+          <div class="card-content">
+            <h3>Fulfilling your orders</h3>
+          </div>
+        </div>
+      </section>
+
+      <!-- ARTICLE -->
+      <section class="article" id="article">
+        <h2 id="article-title"></h2>
+        <p id="article-description"></p>
+        <ul id="article-steps"></ul>
+
+        <div class="article-actions">
+          <button class="btn-primary" onclick="openChat()">Chat with advisor</button>
+          <button class="btn-secondary" onclick="goBack()">Back</button>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- CHAT SIDEBAR (UI ONLY) -->
+    <aside>
+      <div class="chat-header">Chat support</div>
+      <div class="chat-placeholder">
+        Our support advisors are available 24/7 to help with store setup,
+        payments, themes, and order management.
       </div>
-
-      <div class="card" onclick="openArticle('payments')">
-        <img src="https://images.unsplash.com/photo-1556742031-c6961e8560b0">
-        <h3>Setting up payments</h3>
-      </div>
-
-      <div class="card" onclick="openArticle('orders')">
-        <img src="https://images.unsplash.com/photo-1600180758895-7cb19f3bcd0c">
-        <h3>Fulfilling your orders</h3>
-      </div>
-
-    </div>
-
-    <div class="article" id="article"></div>
-
+    </aside>
   </div>
 
-  <!-- RIGHT -->
-  <div class="chat-panel">
-    <div class="queue">
-      ⏳ Waiting in queue… <span>Less than 5 minutes</span>
-    </div>
+  <!-- =========================
+       FOOTER
+  ========================== -->
+  <footer>
+    © 2026 Shopify Help Center · Powered by Live Chat
+  </footer>
 
-    <div class="chat-box">
-      An advisor will join shortly.
-    </div>
+  <!-- =========================
+       JAVASCRIPT
+  ========================== -->
+  <script>
+    const articles = {
+      theme: {
+        title: "Customizing your theme",
+        description: "Your theme controls the look and feel of your online store. Customizing it helps align your storefront with your brand and improve customer experience.",
+        steps: [
+          "Go to your Shopify admin and open Online Store → Themes.",
+          "Click Customize to open the theme editor.",
+          "Use the sidebar to adjust colors, fonts, and layout sections.",
+          "Preview changes on desktop and mobile before saving.",
+          "Publish your theme once you’re satisfied."
+        ]
+      },
+      payments: {
+        title: "Setting up payments",
+        description: "To accept payments, you’ll need to configure a payment provider so customers can securely check out.",
+        steps: [
+          "From your admin, go to Settings → Payments.",
+          "Activate Shopify Payments or choose a third-party provider.",
+          "Complete account verification details.",
+          "Enable additional methods like PayPal or local gateways.",
+          "Run a test transaction to confirm everything works."
+        ]
+      },
+      orders: {
+        title: "Fulfilling your orders",
+        description: "Order fulfillment ensures customers receive their purchases quickly and accurately.",
+        steps: [
+          "Open Orders in your Shopify admin.",
+          "Select an order marked as unfulfilled.",
+          "Review items and shipping address.",
+          "Add tracking details if available.",
+          "Mark the order as fulfilled to notify the customer."
+        ]
+      }
+    };
 
-    <button class="chat-btn" onclick="openChat()">Chat with advisor</button>
-  </div>
+    function openArticle(key) {
+      document.getElementById('cards').style.display = 'none';
+      document.getElementById('hero').style.display = 'none';
+      const article = articles[key];
 
-</div>
+      document.getElementById('article-title').innerText = article.title;
+      document.getElementById('article-description').innerText = article.description;
 
-<footer>
-© 2026 Shopify Help Center · Powered by Live Chat
-</footer>
+      const stepsList = document.getElementById('article-steps');
+      stepsList.innerHTML = '';
+      article.steps.forEach(step => {
+        const li = document.createElement('li');
+        li.innerText = step;
+        stepsList.appendChild(li);
+      });
 
-<script>
-const articles = {
-  theme: `
-    <button class="back" onclick="goBack()">← Back</button>
-    <h2>Customizing your Shopify theme</h2>
-    <p>Your theme controls how your store looks and feels.</p>
-    <ul>
-      <li>Edit colors, fonts, and layout from the theme editor</li>
-      <li>Add or remove homepage sections</li>
-      <li>Preview changes before publishing</li>
-      <li>Use custom CSS for advanced styling</li>
-    </ul>
-    <p>If your design doesn’t look right or you need guidance, chat with a Shopify advisor.</p>
-    <button onclick="openChat()">Chat with advisor</button>
-  `,
-  payments: `
-    <button class="back" onclick="goBack()">← Back</button>
-    <h2>Setting up payments on Shopify</h2>
-    <p>To accept payments, you must activate a payment provider.</p>
-    <ul>
-      <li>Enable Shopify Payments for cards and local methods</li>
-      <li>Connect PayPal, bank transfer, or third-party gateways</li>
-      <li>Test transactions before going live</li>
-      <li>Resolve payout or verification issues</li>
-    </ul>
-    <p>Need help with declined payments or setup errors?</p>
-    <button onclick="openChat()">Chat with advisor</button>
-  `,
-  orders: `
-    <button class="back" onclick="goBack()">← Back</button>
-    <h2>Fulfilling your Shopify orders</h2>
-    <p>Order fulfillment ensures customers receive their products.</p>
-    <ul>
-      <li>Review and process new orders</li>
-      <li>Print shipping labels and packing slips</li>
-      <li>Mark orders as fulfilled</li>
-      <li>Notify customers automatically</li>
-      <li>Handle returns and refunds</li>
-    </ul>
-    <p>If fulfillment is delayed or stuck, an advisor can assist you.</p>
-    <button onclick="openChat()">Chat with advisor</button>
-  `
-};
+      document.getElementById('article').style.display = 'block';
+    }
 
-function openArticle(key){
-  document.getElementById("cards").style.display="none";
-  const a=document.getElementById("article");
-  a.innerHTML=articles[key];
-  a.style.display="block";
-}
+    function goBack() {
+      document.getElementById('article').style.display = 'none';
+      document.getElementById('cards').style.display = 'grid';
+      document.getElementById('hero').style.display = 'block';
+    }
 
-function goBack(){
-  document.getElementById("article").style.display="none";
-  document.getElementById("cards").style.display="grid";
-}
+    function openChat() {
+      if (window.Tawk_API) {
+        Tawk_API.maximize();
+      }
+    }
+  </script>
 
-function openChat(){
-  if(window.Tawk_API){Tawk_API.maximize();}
-}
-</script>
-
-<!-- TAWK.TO -->
-<script type="text/javascript">
-var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-(function(){
-var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-s1.async=true;
-s1.src='https://embed.tawk.to/695cf6db9786b81985f7c43a/1je9i8isk';
-s1.charset='UTF-8';
-s1.setAttribute('crossorigin','*');
-s0.parentNode.insertBefore(s1,s0);
-})();
-</script>
+  <!-- =========================
+       TAWK.TO SCRIPT (UNALTERED)
+  ========================== -->
+  <!--Start of Tawk.to Script-->
+  <script type="text/javascript">
+  var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+  (function(){
+  var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+  s1.async=true;
+  s1.src='https://embed.tawk.to/695cf6db9786b81985f7c43a/1je9i8isk';
+  s1.charset='UTF-8';
+  s1.setAttribute('crossorigin','*');
+  s0.parentNode.insertBefore(s1,s0);
+  })();
+  </script>
+  <!--End of Tawk.to Script-->
 
 </body>
 </html>
