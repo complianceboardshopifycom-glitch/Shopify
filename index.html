@@ -1,399 +1,319 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Shopify Help Center</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<title>Shopify Help Center</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Inter Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<!-- Font -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-  <style>
-    /* =========================
-       GLOBAL STYLES
-    ========================== */
-    * {
-      box-sizing: border-box;
-    }
+<style>
+/* =====================
+   GLOBAL
+===================== */
+* { box-sizing: border-box; }
 
-    body {
-      margin: 0;
-      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-      background: #f6f6f7;
-      color: #202223;
-    }
+body {
+  margin: 0;
+  font-family: 'Inter', system-ui, sans-serif;
+  background: #f1f8f5; /* Shopify Help Center background */
+  color: #202223;
+}
 
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
+button {
+  font-family: inherit;
+  border: none;
+  cursor: pointer;
+}
 
-    button {
-      font-family: inherit;
-      cursor: pointer;
-      border: none;
-    }
+a { text-decoration: none; color: inherit; }
 
-    /* =========================
-       HEADER
-    ========================== */
-    header {
-      background: #ffffff;
-      border-bottom: 1px solid #e1e3e5;
-      padding: 16px 24px;
-    }
+/* =====================
+   HEADER
+===================== */
+header {
+  background: #ffffff;
+  border-bottom: 1px solid #e1e3e5;
+  padding: 16px 24px;
+}
 
-    .header-title {
-      font-size: 18px;
-      font-weight: 600;
-      color: #008060;
-    }
+header h1 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: #008060;
+}
 
-    /* =========================
-       LAYOUT
-    ========================== */
-    .container {
-      display: flex;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 32px 16px;
-      gap: 24px;
-    }
+/* =====================
+   LAYOUT
+===================== */
+.wrapper {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
 
-    main {
-      flex: 1;
-    }
+/* =====================
+   HERO
+===================== */
+.hero h2 {
+  font-size: 40px;
+  margin-bottom: 16px;
+}
 
-    /* =========================
-       HERO / SEARCH
-    ========================== */
-    .hero h1 {
-      font-size: 36px;
-      font-weight: 700;
-      margin-bottom: 16px;
-    }
+.search {
+  max-width: 600px;
+  margin-bottom: 40px;
+}
 
-    .search-box {
-      width: 100%;
-      max-width: 520px;
-      position: relative;
-      margin-bottom: 32px;
-    }
+.search input {
+  width: 100%;
+  padding: 16px 18px;
+  border-radius: 10px;
+  border: 1px solid #c9cccf;
+  font-size: 16px;
+}
 
-    .search-box input {
-      width: 100%;
-      padding: 14px 16px;
-      border-radius: 8px;
-      border: 1px solid #c9cccf;
-      font-size: 15px;
-    }
+/* =====================
+   CARDS
+===================== */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+}
 
-    /* =========================
-       HELP CARDS
-    ========================== */
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 20px;
-    }
+.card {
+  background: #ffffff;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid #e1e3e5;
+  cursor: pointer;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
 
-    .card {
-      background: #ffffff;
-      border-radius: 12px;
-      border: 1px solid #e1e3e5;
-      overflow: hidden;
-      transition: box-shadow 0.2s ease;
-      cursor: pointer;
-    }
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(0,0,0,.08);
+}
 
-    .card:hover {
-      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
-    }
+.card img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+}
 
-    .card img {
-      width: 100%;
-      height: 140px;
-      object-fit: cover;
-    }
+.card div {
+  padding: 18px;
+  font-weight: 600;
+}
 
-    .card-content {
-      padding: 16px;
-    }
+/* =====================
+   ARTICLE PAGE
+===================== */
+.article {
+  display: none;
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 40px;
+  border: 1px solid #e1e3e5;
+}
 
-    .card-content h3 {
-      font-size: 16px;
-      font-weight: 600;
-      margin: 0;
-    }
+.article h3 {
+  font-size: 32px;
+  margin-top: 0;
+}
 
-    /* =========================
-       ARTICLE VIEW
-    ========================== */
-    .article {
-      display: none;
-      background: #ffffff;
-      border-radius: 12px;
-      border: 1px solid #e1e3e5;
-      padding: 32px;
-    }
+.article p {
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
 
-    .article h2 {
-      margin-top: 0;
-      font-size: 28px;
-    }
+.article ul {
+  padding-left: 20px;
+  margin-bottom: 32px;
+}
 
-    .article p {
-      line-height: 1.6;
-      margin-bottom: 16px;
-    }
+.article li {
+  margin-bottom: 10px;
+}
 
-    .article ul {
-      padding-left: 20px;
-      margin-bottom: 24px;
-    }
+/* =====================
+   ACTIONS
+===================== */
+.actions {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
 
-    .article li {
-      margin-bottom: 8px;
-    }
+.primary {
+  background: #008060;
+  color: #ffffff;
+  padding: 14px 22px;
+  border-radius: 10px;
+  font-weight: 600;
+}
 
-    .article-actions {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
+.secondary {
+  background: #eef0f1;
+  padding: 14px 22px;
+  border-radius: 10px;
+  font-weight: 600;
+}
 
-    .btn-primary {
-      background: #008060;
-      color: #ffffff;
-      padding: 12px 18px;
-      border-radius: 8px;
-      font-weight: 600;
-    }
+/* =====================
+   FOOTER
+===================== */
+footer {
+  text-align: center;
+  padding: 32px;
+  color: #6d7175;
+  font-size: 14px;
+}
 
-    .btn-secondary {
-      background: #e1e3e5;
-      padding: 12px 18px;
-      border-radius: 8px;
-      font-weight: 600;
-    }
-
-    /* =========================
-       CHAT SIDEBAR (UI ONLY)
-    ========================== */
-    aside {
-      width: 300px;
-      background: #ffffff;
-      border: 1px solid #e1e3e5;
-      border-radius: 12px;
-      padding: 16px;
-      height: fit-content;
-    }
-
-    .chat-header {
-      font-weight: 600;
-      margin-bottom: 8px;
-      color: #008060;
-    }
-
-    .chat-placeholder {
-      background: #f6f6f7;
-      border-radius: 8px;
-      padding: 16px;
-      font-size: 14px;
-      color: #6d7175;
-    }
-
-    /* =========================
-       FOOTER
-    ========================== */
-    footer {
-      text-align: center;
-      padding: 24px;
-      font-size: 13px;
-      color: #6d7175;
-    }
-
-    /* =========================
-       RESPONSIVE
-    ========================== */
-    @media (max-width: 900px) {
-      .container {
-        flex-direction: column;
-      }
-
-      aside {
-        width: 100%;
-      }
-    }
-  </style>
+/* =====================
+   RESPONSIVE
+===================== */
+@media(max-width: 600px){
+  .hero h2 { font-size: 32px; }
+  .article { padding: 24px; }
+}
+</style>
 </head>
 
 <body>
 
-  <!-- =========================
-       HEADER
-  ========================== -->
-  <header>
-    <div class="header-title">Shopify Help Center</div>
-  </header>
+<header>
+  <h1>Shopify Help Center</h1>
+</header>
 
-  <!-- =========================
-       MAIN CONTENT
-  ========================== -->
-  <div class="container">
-    <main>
+<div class="wrapper">
 
-      <!-- HERO -->
-      <section class="hero" id="hero">
-        <h1>How can we help?</h1>
-        <div class="search-box">
-          <input type="text" placeholder="Search for answers (UI only)" />
-        </div>
-      </section>
-
-      <!-- HELP CARDS -->
-      <section class="cards" id="cards">
-        <div class="card" onclick="openArticle('theme')">
-          <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4" alt="">
-          <div class="card-content">
-            <h3>Customizing your theme</h3>
-          </div>
-        </div>
-
-        <div class="card" onclick="openArticle('payments')">
-          <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d" alt="">
-          <div class="card-content">
-            <h3>Setting up payments</h3>
-          </div>
-        </div>
-
-        <div class="card" onclick="openArticle('orders')">
-          <img src="https://images.unsplash.com/photo-1566576721346-d4a3b4eaeb55" alt="">
-          <div class="card-content">
-            <h3>Fulfilling your orders</h3>
-          </div>
-        </div>
-      </section>
-
-      <!-- ARTICLE -->
-      <section class="article" id="article">
-        <h2 id="article-title"></h2>
-        <p id="article-description"></p>
-        <ul id="article-steps"></ul>
-
-        <div class="article-actions">
-          <button class="btn-primary" onclick="openChat()">Chat with advisor</button>
-          <button class="btn-secondary" onclick="goBack()">Back</button>
-        </div>
-      </section>
-
-    </main>
-
-    <!-- CHAT SIDEBAR (UI ONLY) -->
-    <aside>
-      <div class="chat-header">Chat support</div>
-      <div class="chat-placeholder">
-        Our support advisors are available 24/7 to help with store setup,
-        payments, themes, and order management.
+  <!-- HOME -->
+  <section id="home">
+    <div class="hero">
+      <h2>How can we help?</h2>
+      <div class="search">
+        <input type="text" placeholder="Ask anything..." />
       </div>
-    </aside>
-  </div>
+    </div>
 
-  <!-- =========================
-       FOOTER
-  ========================== -->
-  <footer>
-    © 2026 Shopify Help Center · Powered by Live Chat
-  </footer>
+    <div class="cards">
+      <div class="card" onclick="openArticle('theme')">
+        <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4">
+        <div>Customizing your theme</div>
+      </div>
 
-  <!-- =========================
-       JAVASCRIPT
-  ========================== -->
-  <script>
-    const articles = {
-      theme: {
-        title: "Customizing your theme",
-        description: "Your theme controls the look and feel of your online store. Customizing it helps align your storefront with your brand and improve customer experience.",
-        steps: [
-          "Go to your Shopify admin and open Online Store → Themes.",
-          "Click Customize to open the theme editor.",
-          "Use the sidebar to adjust colors, fonts, and layout sections.",
-          "Preview changes on desktop and mobile before saving.",
-          "Publish your theme once you’re satisfied."
-        ]
-      },
-      payments: {
-        title: "Setting up payments",
-        description: "To accept payments, you’ll need to configure a payment provider so customers can securely check out.",
-        steps: [
-          "From your admin, go to Settings → Payments.",
-          "Activate Shopify Payments or choose a third-party provider.",
-          "Complete account verification details.",
-          "Enable additional methods like PayPal or local gateways.",
-          "Run a test transaction to confirm everything works."
-        ]
-      },
-      orders: {
-        title: "Fulfilling your orders",
-        description: "Order fulfillment ensures customers receive their purchases quickly and accurately.",
-        steps: [
-          "Open Orders in your Shopify admin.",
-          "Select an order marked as unfulfilled.",
-          "Review items and shipping address.",
-          "Add tracking details if available.",
-          "Mark the order as fulfilled to notify the customer."
-        ]
-      }
-    };
+      <div class="card" onclick="openArticle('payments')">
+        <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d">
+        <div>Setting up payments</div>
+      </div>
 
-    function openArticle(key) {
-      document.getElementById('cards').style.display = 'none';
-      document.getElementById('hero').style.display = 'none';
-      const article = articles[key];
+      <div class="card" onclick="openArticle('orders')">
+        <img src="https://images.unsplash.com/photo-1566576721346-d4a3b4eaeb55">
+        <div>Fulfilling your orders</div>
+      </div>
+    </div>
+  </section>
 
-      document.getElementById('article-title').innerText = article.title;
-      document.getElementById('article-description').innerText = article.description;
+  <!-- ARTICLE -->
+  <section class="article" id="article">
+    <h3 id="title"></h3>
+    <p id="desc"></p>
+    <ul id="steps"></ul>
 
-      const stepsList = document.getElementById('article-steps');
-      stepsList.innerHTML = '';
-      article.steps.forEach(step => {
-        const li = document.createElement('li');
-        li.innerText = step;
-        stepsList.appendChild(li);
-      });
+    <div class="actions">
+      <button class="primary" onclick="openChat()">Chat with advisor</button>
+      <button class="secondary" onclick="goBack()">← Back to Help Center</button>
+    </div>
+  </section>
 
-      document.getElementById('article').style.display = 'block';
-    }
+</div>
 
-    function goBack() {
-      document.getElementById('article').style.display = 'none';
-      document.getElementById('cards').style.display = 'grid';
-      document.getElementById('hero').style.display = 'block';
-    }
+<footer>
+© 2026 Shopify Help Center
+</footer>
 
-    function openChat() {
-      if (window.Tawk_API) {
-        Tawk_API.maximize();
-      }
-    }
-  </script>
+<script>
+const data = {
+  theme: {
+    title: "Customizing your theme",
+    desc: "Customizing your theme allows you to control how your storefront looks and feels so it matches your brand and improves customer trust.",
+    steps: [
+      "Go to Online Store → Themes in your Shopify admin.",
+      "Click Customize to open the theme editor.",
+      "Edit colors, fonts, and layout sections using the sidebar.",
+      "Preview changes on mobile and desktop.",
+      "Save and publish once satisfied."
+    ]
+  },
+  payments: {
+    title: "Setting up payments",
+    desc: "Setting up payments ensures customers can securely complete purchases using their preferred methods.",
+    steps: [
+      "Open Settings → Payments from your admin.",
+      "Enable Shopify Payments or select a third-party provider.",
+      "Complete identity and banking verification.",
+      "Enable alternative payment methods if needed.",
+      "Test checkout before launching."
+    ]
+  },
+  orders: {
+    title: "Fulfilling your orders",
+    desc: "Order fulfillment ensures purchased items are packed, shipped, and delivered accurately to customers.",
+    steps: [
+      "Go to Orders in your admin dashboard.",
+      "Open an unfulfilled order.",
+      "Confirm items and shipping details.",
+      "Add tracking information if available.",
+      "Mark the order as fulfilled."
+    ]
+  }
+};
 
-  <!-- =========================
-       TAWK.TO SCRIPT (UNALTERED)
-  ========================== -->
-  <!--Start of Tawk.to Script-->
-  <script type="text/javascript">
-  var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-  (function(){
-  var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-  s1.async=true;
-  s1.src='https://embed.tawk.to/695cf6db9786b81985f7c43a/1je9i8isk';
-  s1.charset='UTF-8';
-  s1.setAttribute('crossorigin','*');
-  s0.parentNode.insertBefore(s1,s0);
-  })();
-  </script>
-  <!--End of Tawk.to Script-->
+function openArticle(key) {
+  document.getElementById('home').style.display = 'none';
+  document.getElementById('article').style.display = 'block';
+
+  document.getElementById('title').innerText = data[key].title;
+  document.getElementById('desc').innerText = data[key].desc;
+
+  const ul = document.getElementById('steps');
+  ul.innerHTML = '';
+  data[key].steps.forEach(s => {
+    const li = document.createElement('li');
+    li.textContent = s;
+    ul.appendChild(li);
+  });
+}
+
+function goBack() {
+  document.getElementById('article').style.display = 'none';
+  document.getElementById('home').style.display = 'block';
+}
+
+function openChat() {
+  if (window.Tawk_API) {
+    Tawk_API.maximize();
+  }
+}
+</script>
+
+<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/695cf6db9786b81985f7c43a/1je9i8isk';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+<!--End of Tawk.to Script-->
 
 </body>
 </html>
