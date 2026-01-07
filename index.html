@@ -3,190 +3,200 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Help Center</title>
+<title>Shopify Help Center</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
-:root {
-  --shopify-green: #008060;
-  --light-green: #f1f8f5;
-  --border: #e5e7eb;
-  --text-dark: #111827;
-  --text-muted: #6b7280;
+:root{
+  --green:#008060;
+  --green-soft:#eef7f3;
+  --border:#e5e7eb;
+  --text:#111827;
+  --muted:#6b7280;
 }
 
-* { box-sizing: border-box; }
+*{box-sizing:border-box}
 
-body {
-  margin: 0;
-  font-family: 'Inter', sans-serif;
-  background: var(--light-green);
-  color: var(--text-dark);
+body{
+  margin:0;
+  font-family:Inter,system-ui,sans-serif;
+  background:linear-gradient(180deg,#f1f8f5,#ffffff);
+  color:var(--text);
 }
 
 /* Header */
-header {
-  background: #fff;
-  border-bottom: 1px solid var(--border);
-  padding: 14px 24px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+header{
+  background:#fff;
+  border-bottom:1px solid var(--border);
+  padding:14px 24px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
 }
 
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-weight: 700;
+.brand{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-weight:700;
 }
 
-.logo-dot {
-  width: 14px;
-  height: 14px;
-  background: var(--shopify-green);
-  border-radius: 50%;
+.brand-dot{
+  width:12px;
+  height:12px;
+  background:var(--green);
+  border-radius:50%;
 }
 
-.avatar {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  background: #eef2f7;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 600;
+.avatar{
+  width:36px;
+  height:36px;
+  border-radius:50%;
+  background:#e5e7eb;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:600;
 }
 
 /* Layout */
-.main {
-  display: grid;
-  grid-template-columns: 1fr 360px;
-  min-height: calc(100vh - 64px);
+.main{
+  display:grid;
+  grid-template-columns:1fr 360px;
+  min-height:calc(100vh - 64px);
 }
 
 /* Left */
-.content {
-  padding: 48px;
+.content{
+  padding:48px;
 }
 
-h1 {
-  font-size: 40px;
-  margin-bottom: 12px;
+h1{
+  font-size:40px;
+  margin-bottom:12px;
 }
 
-.search {
-  width: 100%;
-  padding: 14px 16px;
-  border-radius: 12px;
-  border: 1px solid var(--border);
-  font-size: 16px;
-  margin-bottom: 32px;
+.search{
+  width:100%;
+  padding:14px 18px;
+  border-radius:14px;
+  border:1px solid var(--border);
+  font-size:16px;
+  margin-bottom:36px;
 }
 
 /* Cards */
-.cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 24px;
+.cards{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:24px;
 }
 
-.card {
-  background: #fff;
-  border-radius: 16px;
-  overflow: hidden;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-  cursor: pointer;
-  transition: transform .2s ease;
+.card{
+  background:#fff;
+  border-radius:18px;
+  overflow:hidden;
+  box-shadow:0 10px 28px rgba(0,0,0,.06);
+  cursor:pointer;
+  transition:.2s ease;
 }
 
-.card:hover { transform: translateY(-4px); }
+.card:hover{transform:translateY(-5px)}
 
-.card img {
-  width: 100%;
-  height: 140px;
-  object-fit: cover;
+.card img{
+  width:100%;
+  height:150px;
+  object-fit:cover;
 }
 
-.card h3 {
-  padding: 16px;
-  margin: 0;
-  font-size: 18px;
+.card h3{
+  padding:16px;
+  margin:0;
 }
 
 /* Article */
-.article {
-  display: none;
-  background: #fff;
-  padding: 32px;
-  border-radius: 16px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+.article{
+  display:none;
+  background:#fff;
+  border-radius:18px;
+  padding:36px;
+  box-shadow:0 10px 28px rgba(0,0,0,.06);
 }
 
-.article button {
-  background: var(--shopify-green);
-  border: none;
-  color: #fff;
-  padding: 12px 18px;
-  border-radius: 10px;
-  cursor: pointer;
-  margin-top: 24px;
+.article h2{margin-top:0}
+
+.article ul{
+  padding-left:18px;
+  line-height:1.7;
 }
 
-/* Right Chat Panel */
-.chat-panel {
-  background: #fff;
-  border-left: 1px solid var(--border);
-  padding: 24px;
+.article button{
+  margin-top:28px;
+  padding:14px 18px;
+  background:var(--green);
+  color:#fff;
+  border:none;
+  border-radius:12px;
+  font-size:16px;
+  cursor:pointer;
 }
 
-.queue {
-  background: #f9fafb;
-  border-radius: 12px;
-  padding: 16px;
-  margin-bottom: 20px;
+.back{
+  background:none;
+  border:none;
+  color:var(--green);
+  font-weight:600;
+  margin-bottom:20px;
+  cursor:pointer;
 }
 
-.queue span {
-  color: var(--shopify-green);
-  font-weight: 600;
+/* Chat panel */
+.chat-panel{
+  background:#fff;
+  border-left:1px solid var(--border);
+  padding:24px;
 }
 
-.queue a {
-  color: #dc2626;
-  text-decoration: none;
-  font-size: 14px;
-  margin-left: 8px;
+.queue{
+  background:#f9fafb;
+  padding:16px;
+  border-radius:14px;
+  margin-bottom:20px;
+  font-size:14px;
 }
 
-.chat-box {
-  border: 1px dashed var(--border);
-  border-radius: 16px;
-  height: 300px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--text-muted);
+.queue span{
+  color:var(--green);
+  font-weight:600;
 }
 
-.chat-btn {
-  width: 100%;
-  margin-top: 20px;
-  padding: 14px;
-  background: var(--shopify-green);
-  color: #fff;
-  border: none;
-  border-radius: 12px;
-  font-size: 16px;
-  cursor: pointer;
+.chat-box{
+  border:1px dashed var(--border);
+  height:300px;
+  border-radius:16px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:var(--muted);
 }
 
-footer {
-  text-align: center;
-  padding: 24px;
-  color: var(--text-muted);
+.chat-btn{
+  width:100%;
+  margin-top:20px;
+  padding:14px;
+  background:var(--green);
+  color:#fff;
+  border:none;
+  border-radius:14px;
+  font-size:16px;
+  cursor:pointer;
+}
+
+footer{
+  text-align:center;
+  padding:24px;
+  color:var(--muted);
 }
 </style>
 </head>
@@ -194,9 +204,9 @@ footer {
 <body>
 
 <header>
-  <div class="logo">
-    <div class="logo-dot"></div>
-    Help Center
+  <div class="brand">
+    <div class="brand-dot"></div>
+    Shopify Help Center
   </div>
   <div class="avatar">SC</div>
 </header>
@@ -207,33 +217,35 @@ footer {
   <div class="content">
 
     <h1>How can we help?</h1>
-    <input class="search" placeholder="Ask anything…" />
+    <input class="search" placeholder="Ask anything about Shopify…" />
 
     <div class="cards" id="cards">
+
       <div class="card" onclick="openArticle('theme')">
-        <img src="https://images.unsplash.com/photo-1581091012184-5c7c4f6f58b9">
+        <img src="https://images.unsplash.com/photo-1522199710521-72d69614c702">
         <h3>Customizing your theme</h3>
       </div>
 
       <div class="card" onclick="openArticle('payments')">
-        <img src="https://images.unsplash.com/photo-1605902711622-cfb43c4437b1">
+        <img src="https://images.unsplash.com/photo-1556742031-c6961e8560b0">
         <h3>Setting up payments</h3>
       </div>
 
       <div class="card" onclick="openArticle('orders')">
-        <img src="https://images.unsplash.com/photo-1600180758890-6b94519a8ba6">
+        <img src="https://images.unsplash.com/photo-1600180758895-7cb19f3bcd0c">
         <h3>Fulfilling your orders</h3>
       </div>
+
     </div>
 
     <div class="article" id="article"></div>
+
   </div>
 
   <!-- RIGHT -->
   <div class="chat-panel">
     <div class="queue">
-      ⏳ Waiting in queue… <span>Less than 5 mins</span>
-      <a href="#" onclick="leaveQueue()">Leave queue</a>
+      ⏳ Waiting in queue… <span>Less than 5 minutes</span>
     </div>
 
     <div class="chat-box">
@@ -242,48 +254,71 @@ footer {
 
     <button class="chat-btn" onclick="openChat()">Chat with advisor</button>
   </div>
+
 </div>
 
 <footer>
-© 2026 Help Center · Powered by Live Chat
+© 2026 Shopify Help Center · Powered by Live Chat
 </footer>
 
 <script>
 const articles = {
   theme: `
-    <h2>Customizing your theme</h2>
-    <p>You can customize your store appearance by editing colors, typography, and layout settings inside your theme editor.</p>
-    <button onclick="openChat()">Chat with an advisor</button>
+    <button class="back" onclick="goBack()">← Back</button>
+    <h2>Customizing your Shopify theme</h2>
+    <p>Your theme controls how your store looks and feels.</p>
+    <ul>
+      <li>Edit colors, fonts, and layout from the theme editor</li>
+      <li>Add or remove homepage sections</li>
+      <li>Preview changes before publishing</li>
+      <li>Use custom CSS for advanced styling</li>
+    </ul>
+    <p>If your design doesn’t look right or you need guidance, chat with a Shopify advisor.</p>
+    <button onclick="openChat()">Chat with advisor</button>
   `,
   payments: `
-    <h2>Setting up payments</h2>
-    <p>Enable payment providers to accept cards, bank transfers, and local payment methods securely.</p>
-    <button onclick="openChat()">Chat with an advisor</button>
+    <button class="back" onclick="goBack()">← Back</button>
+    <h2>Setting up payments on Shopify</h2>
+    <p>To accept payments, you must activate a payment provider.</p>
+    <ul>
+      <li>Enable Shopify Payments for cards and local methods</li>
+      <li>Connect PayPal, bank transfer, or third-party gateways</li>
+      <li>Test transactions before going live</li>
+      <li>Resolve payout or verification issues</li>
+    </ul>
+    <p>Need help with declined payments or setup errors?</p>
+    <button onclick="openChat()">Chat with advisor</button>
   `,
   orders: `
-    <h2>Fulfilling your orders</h2>
-    <p>Process orders, print shipping labels, and notify customers when items are shipped.</p>
-    <button onclick="openChat()">Chat with an advisor</button>
+    <button class="back" onclick="goBack()">← Back</button>
+    <h2>Fulfilling your Shopify orders</h2>
+    <p>Order fulfillment ensures customers receive their products.</p>
+    <ul>
+      <li>Review and process new orders</li>
+      <li>Print shipping labels and packing slips</li>
+      <li>Mark orders as fulfilled</li>
+      <li>Notify customers automatically</li>
+      <li>Handle returns and refunds</li>
+    </ul>
+    <p>If fulfillment is delayed or stuck, an advisor can assist you.</p>
+    <button onclick="openChat()">Chat with advisor</button>
   `
 };
 
-function openArticle(key) {
-  document.getElementById('cards').style.display = 'none';
-  const a = document.getElementById('article');
-  a.innerHTML = articles[key];
-  a.style.display = 'block';
+function openArticle(key){
+  document.getElementById("cards").style.display="none";
+  const a=document.getElementById("article");
+  a.innerHTML=articles[key];
+  a.style.display="block";
 }
 
-function openChat() {
-  if (window.Tawk_API) {
-    Tawk_API.maximize();
-  }
+function goBack(){
+  document.getElementById("article").style.display="none";
+  document.getElementById("cards").style.display="grid";
 }
 
-function leaveQueue() {
-  if (window.Tawk_API) {
-    Tawk_API.minimize();
-  }
+function openChat(){
+  if(window.Tawk_API){Tawk_API.maximize();}
 }
 </script>
 
