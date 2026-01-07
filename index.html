@@ -2,116 +2,233 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Shopify Live Support</title>
+<title>Help Center</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- Shopify-like font -->
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
 :root{
-  --shopify-green:#008060;
-  --shopify-green-dark:#004c3f;
-  --text-dark:#202223;
-  --text-muted:#6d7175;
+  --green:#008060;
+  --bg:#f6f6f7;
+  --border:#e1e3e5;
+  --text:#202223;
+  --muted:#6d7175;
 }
 
-/* RESET */
 *{box-sizing:border-box}
+
 body{
   margin:0;
   font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+}
+
+/* TOP BAR */
+.topbar{
+  height:56px;
   background:#fff;
-  color:var(--text-dark);
-}
-
-/* FULL SHOPIFY GREEN BACKGROUND */
-.shopify-bg{
-  min-height:100vh;
-  background:linear-gradient(180deg,var(--shopify-green) 0%, var(--shopify-green-dark) 100%);
+  border-bottom:1px solid var(--border);
   display:flex;
-  justify-content:center;
-  align-items:flex-start;
-  padding:90px 20px;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 20px;
+  font-weight:600;
 }
 
-/* CONTENT CARD */
-.chat-page{
-  width:100%;
-  max-width:1100px;
-  background:#ffffff;
-  border-radius:18px;
-  padding:60px;
-  box-shadow:0 30px 60px rgba(0,0,0,.25);
+.logo{
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+
+/* MAIN LAYOUT */
+.main{
   display:grid;
-  grid-template-columns:1.2fr 1fr;
-  gap:50px;
+  grid-template-columns:1fr 360px;
+  height:calc(100vh - 56px);
 }
 
-/* LEFT SIDE */
-.chat-left h1{
+/* LEFT */
+.left{
+  padding:60px 60px 40px;
+  overflow:auto;
+}
+
+.left h1{
   font-size:42px;
   margin-bottom:20px;
-  line-height:1.2;
 }
 
-.chat-left p{
-  font-size:18px;
-  color:var(--text-muted);
-  line-height:1.7;
-  margin-bottom:35px;
+.search{
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:14px 16px;
+  font-size:16px;
+  width:100%;
+  margin-bottom:40px;
 }
 
-.primary-btn{
-  background:var(--shopify-green);
+/* HELP CARDS */
+.cards{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:20px;
+}
+
+.card{
+  background:#fff;
+  border-radius:16px;
+  padding:20px;
+  cursor:pointer;
+  border:1px solid var(--border);
+  transition:.15s;
+}
+
+.card:hover{
+  border-color:var(--green);
+  transform:translateY(-2px);
+}
+
+.card img{
+  width:100%;
+  border-radius:12px;
+  margin-bottom:14px;
+}
+
+/* RIGHT CHAT */
+.right{
+  background:#fff;
+  border-left:1px solid var(--border);
+  padding:20px;
+  display:flex;
+  flex-direction:column;
+}
+
+.queue{
+  background:#f6f6f7;
+  border-radius:12px;
+  padding:14px;
+  margin-bottom:14px;
+  font-size:14px;
+}
+
+.leave{
+  font-size:13px;
+  color:#b42318;
+  cursor:pointer;
+  margin-left:auto;
+}
+
+.chatbox{
+  flex:1;
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:16px;
+  font-size:14px;
+  color:var(--muted);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+}
+
+.input{
+  margin-top:14px;
+  display:flex;
+  gap:10px;
+}
+
+.input button{
+  background:var(--green);
   color:#fff;
-  padding:14px 26px;
   border:none;
-  border-radius:8px;
+  border-radius:10px;
+  padding:12px 16px;
   font-weight:600;
   cursor:pointer;
 }
-.primary-btn:hover{background:#006e52}
+</style>
+</head>
 
-/* RIGHT SIDE */
-.chat-right{
-  background:#f6f6f7;
-  padding:35px;
-  border-radius:14px;
-}
+<body>
 
-.chat-right h3{
-  margin-bottom:18px;
-}
+<div class="topbar">
+  <div class="logo">🟢 Help</div>
+  <div>SC</div>
+</div>
 
-/* CLICKABLE ITEMS */
-.chat-links{
-  list-style:none;
-  padding:0;
-  margin:0 0 20px 0;
-}
+<div class="main">
 
-.chat-links li{
-  background:#fff;
-  border:1px solid #e1e3e5;
-  border-radius:10px;
-  padding:14px 16px;
-  margin-bottom:12px;
-  cursor:pointer;
-  font-weight:500;
-  transition:all .15s ease;
-}
+  <!-- LEFT -->
+  <section class="left">
+    <h1>How can we help?</h1>
+    <input class="search" placeholder="Ask anything">
 
-.chat-links li:hover{
-  background:#eaf5f1;
-  border-color:var(--shopify-green);
-  color:var(--shopify-green);
-}
+    <div class="cards">
+      <div class="card" onclick="openChat('Customizing your theme')">
+        <img src="https://picsum.photos/400/250?random=1">
+        <strong>Customizing your theme</strong>
+      </div>
 
-/* MOBILE */
-@media(max-width:900px){
-  .chat-page{
-    grid-template-columns:1fr;
-    padding:40px;
+      <div class="card" onclick="openChat('Setting up payments')">
+        <img src="https://picsum.photos/400/250?random=2">
+        <strong>Setting up payments</strong>
+      </div>
+
+      <div class="card" onclick="openChat('Fulfilling orders')">
+        <img src="https://picsum.photos/400/250?random=3">
+        <strong>Fulfilling your orders</strong>
+      </div>
+    </div>
+  </section>
+
+  <!-- RIGHT -->
+  <aside class="right">
+    <div class="queue">
+      ⏳ Waiting in queue… <br>
+      <small>Less than 5 mins</small>
+      <span class="leave" onclick="leaveQueue()">Leave queue</span>
+    </div>
+
+    <div class="chatbox">
+      An advisor will join shortly.<br>
+      Click below to start chatting.
+    </div>
+
+    <div class="input">
+      <button onclick="openChat('General support')">Type a message</button>
+    </div>
+  </aside>
+
+</div>
+
+<!-- TAWK -->
+<script>
+var Tawk_API=Tawk_API||{},Tawk_LoadStart=new Date();
+(function(){
+  var s1=document.createElement("script"),
+      s0=document.getElementsByTagName("script")[0];
+  s1.async=true;
+  s1.src='https://embed.tawk.to/695cf6db9786b81985f7c43a/1je9i8isk';
+  s1.charset='UTF-8';
+  s1.setAttribute('crossorigin','*');
+  s0.parentNode.insertBefore(s1,s0);
+})();
+
+function openChat(topic){
+  if(Tawk_API){
+    Tawk_API.maximize();
   }
-  .chat-
+}
+
+function leaveQueue(){
+  if(Tawk_API){
+    Tawk_API.minimize();
+  }
+}
+</script>
+
+</body>
+</html>
