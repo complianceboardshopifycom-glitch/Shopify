@@ -1,233 +1,303 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Help Center</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
-:root{
-  --green:#008060;
-  --bg:#f6f6f7;
-  --border:#e1e3e5;
-  --text:#202223;
-  --muted:#6d7175;
+:root {
+  --shopify-green: #008060;
+  --light-green: #f1f8f5;
+  --border: #e5e7eb;
+  --text-dark: #111827;
+  --text-muted: #6b7280;
 }
 
-*{box-sizing:border-box}
+* { box-sizing: border-box; }
 
-body{
-  margin:0;
-  font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;
-  background:var(--bg);
-  color:var(--text);
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background: var(--light-green);
+  color: var(--text-dark);
 }
 
-/* TOP BAR */
-.topbar{
-  height:56px;
-  background:#fff;
-  border-bottom:1px solid var(--border);
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:0 20px;
-  font-weight:600;
+/* Header */
+header {
+  background: #fff;
+  border-bottom: 1px solid var(--border);
+  padding: 14px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.logo{
-  display:flex;
-  align-items:center;
-  gap:8px;
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
 }
 
-/* MAIN LAYOUT */
-.main{
-  display:grid;
-  grid-template-columns:1fr 360px;
-  height:calc(100vh - 56px);
+.logo-dot {
+  width: 14px;
+  height: 14px;
+  background: var(--shopify-green);
+  border-radius: 50%;
 }
 
-/* LEFT */
-.left{
-  padding:60px 60px 40px;
-  overflow:auto;
+.avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #eef2f7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
 }
 
-.left h1{
-  font-size:42px;
-  margin-bottom:20px;
+/* Layout */
+.main {
+  display: grid;
+  grid-template-columns: 1fr 360px;
+  min-height: calc(100vh - 64px);
 }
 
-.search{
-  border:1px solid var(--border);
-  border-radius:12px;
-  padding:14px 16px;
-  font-size:16px;
-  width:100%;
-  margin-bottom:40px;
+/* Left */
+.content {
+  padding: 48px;
 }
 
-/* HELP CARDS */
-.cards{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:20px;
+h1 {
+  font-size: 40px;
+  margin-bottom: 12px;
 }
 
-.card{
-  background:#fff;
-  border-radius:16px;
-  padding:20px;
-  cursor:pointer;
-  border:1px solid var(--border);
-  transition:.15s;
+.search {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  font-size: 16px;
+  margin-bottom: 32px;
 }
 
-.card:hover{
-  border-color:var(--green);
-  transform:translateY(-2px);
+/* Cards */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 24px;
 }
 
-.card img{
-  width:100%;
-  border-radius:12px;
-  margin-bottom:14px;
+.card {
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+  cursor: pointer;
+  transition: transform .2s ease;
 }
 
-/* RIGHT CHAT */
-.right{
-  background:#fff;
-  border-left:1px solid var(--border);
-  padding:20px;
-  display:flex;
-  flex-direction:column;
+.card:hover { transform: translateY(-4px); }
+
+.card img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
 }
 
-.queue{
-  background:#f6f6f7;
-  border-radius:12px;
-  padding:14px;
-  margin-bottom:14px;
-  font-size:14px;
+.card h3 {
+  padding: 16px;
+  margin: 0;
+  font-size: 18px;
 }
 
-.leave{
-  font-size:13px;
-  color:#b42318;
-  cursor:pointer;
-  margin-left:auto;
+/* Article */
+.article {
+  display: none;
+  background: #fff;
+  padding: 32px;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
 }
 
-.chatbox{
-  flex:1;
-  border:1px solid var(--border);
-  border-radius:14px;
-  padding:16px;
-  font-size:14px;
-  color:var(--muted);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
+.article button {
+  background: var(--shopify-green);
+  border: none;
+  color: #fff;
+  padding: 12px 18px;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-top: 24px;
 }
 
-.input{
-  margin-top:14px;
-  display:flex;
-  gap:10px;
+/* Right Chat Panel */
+.chat-panel {
+  background: #fff;
+  border-left: 1px solid var(--border);
+  padding: 24px;
 }
 
-.input button{
-  background:var(--green);
-  color:#fff;
-  border:none;
-  border-radius:10px;
-  padding:12px 16px;
-  font-weight:600;
-  cursor:pointer;
+.queue {
+  background: #f9fafb;
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 20px;
+}
+
+.queue span {
+  color: var(--shopify-green);
+  font-weight: 600;
+}
+
+.queue a {
+  color: #dc2626;
+  text-decoration: none;
+  font-size: 14px;
+  margin-left: 8px;
+}
+
+.chat-box {
+  border: 1px dashed var(--border);
+  border-radius: 16px;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+}
+
+.chat-btn {
+  width: 100%;
+  margin-top: 20px;
+  padding: 14px;
+  background: var(--shopify-green);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+footer {
+  text-align: center;
+  padding: 24px;
+  color: var(--text-muted);
 }
 </style>
 </head>
 
 <body>
 
-<div class="topbar">
-  <div class="logo">🟢 Help</div>
-  <div>SC</div>
-</div>
+<header>
+  <div class="logo">
+    <div class="logo-dot"></div>
+    Help Center
+  </div>
+  <div class="avatar">SC</div>
+</header>
 
 <div class="main">
 
   <!-- LEFT -->
-  <section class="left">
+  <div class="content">
+
     <h1>How can we help?</h1>
-    <input class="search" placeholder="Ask anything">
+    <input class="search" placeholder="Ask anything…" />
 
-    <div class="cards">
-      <div class="card" onclick="openChat('Customizing your theme')">
-        <img src="https://picsum.photos/400/250?random=1">
-        <strong>Customizing your theme</strong>
+    <div class="cards" id="cards">
+      <div class="card" onclick="openArticle('theme')">
+        <img src="https://images.unsplash.com/photo-1581091012184-5c7c4f6f58b9">
+        <h3>Customizing your theme</h3>
       </div>
 
-      <div class="card" onclick="openChat('Setting up payments')">
-        <img src="https://picsum.photos/400/250?random=2">
-        <strong>Setting up payments</strong>
+      <div class="card" onclick="openArticle('payments')">
+        <img src="https://images.unsplash.com/photo-1605902711622-cfb43c4437b1">
+        <h3>Setting up payments</h3>
       </div>
 
-      <div class="card" onclick="openChat('Fulfilling orders')">
-        <img src="https://picsum.photos/400/250?random=3">
-        <strong>Fulfilling your orders</strong>
+      <div class="card" onclick="openArticle('orders')">
+        <img src="https://images.unsplash.com/photo-1600180758890-6b94519a8ba6">
+        <h3>Fulfilling your orders</h3>
       </div>
     </div>
-  </section>
+
+    <div class="article" id="article"></div>
+  </div>
 
   <!-- RIGHT -->
-  <aside class="right">
+  <div class="chat-panel">
     <div class="queue">
-      ⏳ Waiting in queue… <br>
-      <small>Less than 5 mins</small>
-      <span class="leave" onclick="leaveQueue()">Leave queue</span>
+      ⏳ Waiting in queue… <span>Less than 5 mins</span>
+      <a href="#" onclick="leaveQueue()">Leave queue</a>
     </div>
 
-    <div class="chatbox">
-      An advisor will join shortly.<br>
-      Click below to start chatting.
+    <div class="chat-box">
+      An advisor will join shortly.
     </div>
 
-    <div class="input">
-      <button onclick="openChat('General support')">Type a message</button>
-    </div>
-  </aside>
-
+    <button class="chat-btn" onclick="openChat()">Chat with advisor</button>
+  </div>
 </div>
 
-<!-- TAWK -->
-<script>
-var Tawk_API=Tawk_API||{},Tawk_LoadStart=new Date();
-(function(){
-  var s1=document.createElement("script"),
-      s0=document.getElementsByTagName("script")[0];
-  s1.async=true;
-  s1.src='https://embed.tawk.to/695cf6db9786b81985f7c43a/1je9i8isk';
-  s1.charset='UTF-8';
-  s1.setAttribute('crossorigin','*');
-  s0.parentNode.insertBefore(s1,s0);
-})();
+<footer>
+© 2026 Help Center · Powered by Live Chat
+</footer>
 
-function openChat(topic){
-  if(Tawk_API){
+<script>
+const articles = {
+  theme: `
+    <h2>Customizing your theme</h2>
+    <p>You can customize your store appearance by editing colors, typography, and layout settings inside your theme editor.</p>
+    <button onclick="openChat()">Chat with an advisor</button>
+  `,
+  payments: `
+    <h2>Setting up payments</h2>
+    <p>Enable payment providers to accept cards, bank transfers, and local payment methods securely.</p>
+    <button onclick="openChat()">Chat with an advisor</button>
+  `,
+  orders: `
+    <h2>Fulfilling your orders</h2>
+    <p>Process orders, print shipping labels, and notify customers when items are shipped.</p>
+    <button onclick="openChat()">Chat with an advisor</button>
+  `
+};
+
+function openArticle(key) {
+  document.getElementById('cards').style.display = 'none';
+  const a = document.getElementById('article');
+  a.innerHTML = articles[key];
+  a.style.display = 'block';
+}
+
+function openChat() {
+  if (window.Tawk_API) {
     Tawk_API.maximize();
   }
 }
 
-function leaveQueue(){
-  if(Tawk_API){
+function leaveQueue() {
+  if (window.Tawk_API) {
     Tawk_API.minimize();
   }
 }
+</script>
+
+<!-- TAWK.TO -->
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/695cf6db9786b81985f7c43a/1je9i8isk';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
 </script>
 
 </body>
